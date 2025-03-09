@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { X, Instagram, Linkedin, Mail } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import ScrollVelocity from "./scroll-velocity";
@@ -29,18 +29,17 @@ export default function OurTeamSection() {
       linkedin: "https://www.linkedin.com/in/asep-jamaludin-061565294/",
       image: "/images/users/user1.JPG",
       bio: "Frontend developer with expertise in React and modern JavaScript frameworks. Loves creating responsive and accessible web applications.",
-
       skills: ["React", "JavaScript", "Tailwind CSS", "TypeScript"],
     },
     {
       id: 2,
       name: "Rheno Febrian",
-      nim: "2021010102",
+      nim: "1301220188",
       role: "Backend Developer",
       email: "rfebrianc@gmail.com",
       instagram: "@rhenofbrn",
       linkedin: "@rhenofbrn",
-      image: "https://source.unsplash.com/random/200x200?face=2",
+      image: "/images/users/user2.jpg",
       bio: "Backend developer specializing in Node.js and database design. Passionate about building scalable and secure APIs.",
       skills: ["Node.js", "Express", "MongoDB", "SQL"],
     },
@@ -71,8 +70,7 @@ export default function OurTeamSection() {
   ];
 
   const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
-  const containerRef = useRef(null);
-  const [velocity, setVelocity] = useState(40);
+  const [velocity] = useState(40);
 
   // Function to open modal with member details
   const openMemberDetails = (member: TeamMember) => {
@@ -141,10 +139,12 @@ export default function OurTeamSection() {
       {/* ScrollVelocity component - full width */}
       <div className="w-full overflow-hidden mb-16">
         <ScrollVelocity
-          texts={[
-            "Meet Our Team • Talented Experts • Creative Minds • ",
-            "Innovative Solutions • Collaborative Work • Professional Skills • ",
-          ]}
+          texts={
+            [
+              "Meet Our Team • Talented Experts • Creative Minds • ",
+              "Innovative Solutions • Collaborative Work • Professional Skills • ",
+            ] as string[]
+          }
           velocity={velocity}
           className="text-blue-500 dark:text-blue-400 px-4"
           parallaxClassName="py-2 bg-white dark:bg-black"
